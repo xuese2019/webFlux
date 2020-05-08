@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea436b6d-632b-4885-9fea-bf7661e4f804" name="Default Changelist" comment="" />
+    <list default="true" id="ea436b6d-632b-4885-9fea-bf7661e4f804" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/font-awesome/4.5.0/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/ionicons/2.0.1/ionicons.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588931774261</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="删除static静态资源，自我实现的除外；&#10;adminlte由原来的static目录引入改为maven引入&#10;重新调整登录页面（未完成）">
+      <created>1588931848750</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588931848750</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -141,10 +153,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="530" y="181" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1600.870@0.0.1600.870" timestamp="1588042469834" />
-    <state x="438" y="30" key="CommitChangelistDialog2" timestamp="1588931765087">
+    <state x="438" y="17" key="CommitChangelistDialog2" timestamp="1588931848050">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="438" y="30" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1588931765087" />
+    <state x="438" y="17" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1588931848050" />
     <state width="734" height="466" key="DebuggerActiveHint" timestamp="1588923043884">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -189,10 +201,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.870@0.0.1600.870" timestamp="1588239451598" />
-    <state x="392" y="168" key="Vcs.Push.Dialog.v2" timestamp="1588931778645">
+    <state x="392" y="168" key="Vcs.Push.Dialog.v2" timestamp="1588931850228">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="392" y="168" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1588931778645" />
+    <state x="392" y="168" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1588931850228" />
     <state x="90" y="123" width="1416" height="686" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588923446741">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
