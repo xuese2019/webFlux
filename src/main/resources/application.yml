@@ -1,0 +1,39 @@
+spring:
+  thymeleaf:
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template: true
+    cache: false
+  data:
+    mongodb:
+      host: localhost
+      database: webflux
+      port: 27017
+
+# 更改端口
+server:
+  port: 9001
+# 自我监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        #暴露自我监控的所有接口
+        include: "*"
+    #        显式启用/shutdown
+  endpoint:
+    shutdown:
+      enabled: true
+  server:
+    #    监控的端口
+    port: 9002
+
+logging:
+  level:
+    org.springframework.data.mongodb.core: DEBUG
+
+# 下载文件暂存路径
+download-path:
+  word-path: F:\download\word\newFiles

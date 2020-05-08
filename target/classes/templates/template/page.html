@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+</head>
+<body>
+<div th:fragment="page">
+    <ul class="pagination pagination-xm m-0 float-right">
+        <li class="page-item disabled">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">总条数</font>
+                </font>
+            </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;" id="total">0</font>
+                </font>
+            </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">条</font>
+                </font>
+            </a>
+        </li>
+
+        <li class="page-item disabled">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">总页数</font>
+                </font>
+            </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;" id="pages">0</font>
+                </font>
+            </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">页</font>
+                </font>
+            </a>
+        </li>
+
+        <li class="page-item">
+            <ul class="pagination pagination-xm m-0" id="pages2">
+            </ul>
+        </li>
+    </ul>
+    <!--pageUtil-->
+    <script th:src="@{/js/pageUtil/pageUtil.js}"></script>
+</div>
+</body>
+</html>

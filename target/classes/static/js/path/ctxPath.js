@@ -1,0 +1,1 @@
+var root = window.location.protocol + '//' + window.location.host;

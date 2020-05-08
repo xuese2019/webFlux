@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="/template/cssAndJs::head('模拟系统')">
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- 顶部 -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!--        左侧工具栏-->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+        <!-- 右侧工具栏 -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:logout();" role="button">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /顶部 -->
+
+    <!-- 左侧 -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="width:250px;">
+        <!-- 顶部logo -->
+        <a th:href="@{/page/home/home}" class="brand-link" align="center">
+            <!--            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"-->
+            <!--                 style="opacity: .8">-->
+            <span class="brand-text font-weight-light">
+                系统菜单
+            </span>
+        </a>
+
+        <!-- 菜单 -->
+        <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                系统菜单
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="javascript:to('user','user');" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>用户管理</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                飞行器菜单
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>参数输入</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:to('aerocraft','graphics');" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>图形展示</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Simple Link
+                                <!--                                <span class="right badge badge-danger">New</span>-->
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- 中部显示区域 -->
+    <div class="content-wrapper" id="content" style="width: calc(100vw - 250px);height: calc(100vh - 90px);overflow-y:auto;">
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- 底部 -->
+    <footer class="main-footer">
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<div th:include="/template/cssAndJs::js"></div>
+<!--home-->
+<script th:src="@{/js/home/home.js}"></script>
+</body>
+</html>

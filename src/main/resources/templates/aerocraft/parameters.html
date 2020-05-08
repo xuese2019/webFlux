@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <label>飞行器数量:</label>
+    <span id="num"></span>
+    <br>
+    <label for="sudu">速度</label>
+    <input id="sudu" type="text">
+    <br>
+    <input type="button" value="确定" onclick="submit()">
+</body>
+<script th:src="@{/js/jquery/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/path/ctxPath.js}"></script>
+<script>
+    init();
+
+    //初始化加载
+    function init(){
+        $.ajax({
+            url:getRootPath()+"/aerocraft/aerocraft",
+            dataType:"json",
+            async:true,
+            type:"GET",
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(req){
+                //请求成功时处理
+                $("#num").text(req.data);
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+    //确定提交
+    function submit(){
+        $.ajax({
+            url:getRootPath()+"/aerocraft/aerocraft",
+            dataType:"json",
+            async:true,
+            data:{"sudu",$("#sudu").val()},
+            type:"post",
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(req){
+                //请求成功时处理
+                $("#num").text(req.data);
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+</script>
+</html>

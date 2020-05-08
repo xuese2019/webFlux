@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ea436b6d-632b-4885-9fea-bf7661e4f804" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1avhSH58cb9pMKT65uuVKVBjgqP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.webFlux.util.response" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\work\project\webFlux\src\main\resources\templates" />
+      <recent name="G:\work\project\webFlux\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="WebFluxApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.webFlux.WebFluxApplication" />
+      <module name="webFlux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webFlux.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.WebFluxApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ea436b6d-632b-4885-9fea-bf7661e4f804" name="Default Changelist" comment="" />
+      <created>1587621975579</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587621975579</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="392" y="93" key="#Inspections" timestamp="1588145803900">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="392" y="93" key="#Inspections/0.0.1600.870@0.0.1600.870" timestamp="1588145803900" />
+    <state x="254" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588144751284">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="254" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1588144751284" />
+    <state x="605" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1588922103705">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="605" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1600.870@0.0.1600.870" timestamp="1588922103705" />
+    <state x="705" y="365" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1588054644381">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="705" y="365" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1600.870@0.0.1600.870" timestamp="1588054644381" />
+    <state x="530" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588151031534">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="530" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.870@0.0.1600.870" timestamp="1588151031534" />
+    <state x="530" y="181" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1588042469834">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="530" y="181" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1600.870@0.0.1600.870" timestamp="1588042469834" />
+    <state x="438" y="30" key="CommitChangelistDialog2" timestamp="1588928016064">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="438" y="30" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1588928016064" />
+    <state width="734" height="466" key="DebuggerActiveHint" timestamp="1588923043884">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="734" height="466" key="DebuggerActiveHint/0.0.1600.870@0.0.1600.870" timestamp="1588923043884" />
+    <state x="580" y="176" key="FileChooserDialogImpl" timestamp="1588927990072">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="580" y="176" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1588927990072" />
+    <state width="1557" height="252" key="GridCell.Tab.0.bottom" timestamp="1588927459247">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.0.bottom/0.0.1600.870@0.0.1600.870" timestamp="1588927459247" />
+    <state width="1557" height="252" key="GridCell.Tab.0.center" timestamp="1588927459247">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.0.center/0.0.1600.870@0.0.1600.870" timestamp="1588927459247" />
+    <state width="1557" height="252" key="GridCell.Tab.0.left" timestamp="1588927459247">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.0.left/0.0.1600.870@0.0.1600.870" timestamp="1588927459247" />
+    <state width="1557" height="252" key="GridCell.Tab.0.right" timestamp="1588927459247">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.0.right/0.0.1600.870@0.0.1600.870" timestamp="1588927459247" />
+    <state width="1557" height="252" key="GridCell.Tab.1.bottom" timestamp="1588927459154">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.1.bottom/0.0.1600.870@0.0.1600.870" timestamp="1588927459154" />
+    <state width="1557" height="252" key="GridCell.Tab.1.center" timestamp="1588927459154">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.1.center/0.0.1600.870@0.0.1600.870" timestamp="1588927459154" />
+    <state width="1557" height="252" key="GridCell.Tab.1.left" timestamp="1588927459154">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.1.left/0.0.1600.870@0.0.1600.870" timestamp="1588927459154" />
+    <state width="1557" height="252" key="GridCell.Tab.1.right" timestamp="1588927459154">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1557" height="252" key="GridCell.Tab.1.right/0.0.1600.870@0.0.1600.870" timestamp="1588927459154" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1588239451598">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1600.870@0.0.1600.870" timestamp="1588239451598" />
+    <state x="90" y="123" width="1416" height="686" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588923446741">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="90" y="123" width="1416" height="686" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1600.870@0.0.1600.870" timestamp="1588923446741" />
+    <state x="480" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1588900862030">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="480" y="259" key="com.intellij.ide.util.TipDialog/0.0.1600.870@0.0.1600.870" timestamp="1588900862030" />
+    <state x="563" y="153" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587627251128">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="563" y="153" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1600.870@0.0.1600.870" timestamp="1587627251128" />
+    <state x="476" y="168" width="647" height="534" key="find.popup" timestamp="1588238163005">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="476" y="168" width="647" height="534" key="find.popup/0.0.1600.870@0.0.1600.870" timestamp="1588238163005" />
+    <state x="463" y="182" width="672" height="678" key="search.everywhere.popup" timestamp="1588911153016">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="463" y="182" width="672" height="678" key="search.everywhere.popup/0.0.1600.870@0.0.1600.870" timestamp="1588911153016" />
+  </component>
+</project>
