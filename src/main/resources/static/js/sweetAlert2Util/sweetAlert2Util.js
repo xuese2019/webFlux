@@ -13,3 +13,20 @@ function alert2(ico,title){
         title: title
     })
 }
+
+var Toast2 = this.swal.mixin({
+    toast: true,
+    position: 'top',
+    showConfirmButton: false
+});
+function alert2Ok(ico,title,text){
+     return Toast2.fire({
+        icon: ico,
+        title: title,
+        text: text,
+        showConfirmButton: true,
+        confirmButtonText: '确定',
+        showCancelButton: true,
+        cancelButtonText: '取消'
+    });
+}

@@ -6,52 +6,46 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <!--                        <font style="vertical-align: inherit;">-->
-                        <!--                            <font style="vertical-align: inherit;">用户列表</font>-->
-                        <!--                        </font>-->
-                        <button type="button" class="btn btn-block btn-primary btn-sm float-right" data-toggle="modal"
-                                data-target="#modal-add-user">新增
-                        </button>
-                    </h3>
-
-                    <div class="card-tools">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-tools">
+                        <div style="float:left;">
+                            <!--                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"-->
+                            <!--                                    data-target="#modal-imp">导入-->
+                            <!--                            </button>-->
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#modal-add-user">新增
+                            </button>
+                        </div>
                         <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" id="table_search" class="form-control float-right" placeholder="搜索">
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-default" onclick="page(0,1)"><i
-                                        class="fas fa-search"></i></button>
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="搜索"
+                                   id="table_search">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default" onclick="page(0,0)"><i
+                                        class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ID</font></font>
                             </th>
                             <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font></font>
                             </th>
-                            <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日期</font></font>
-                            </th>
                             <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">操作</font></font>
                             </th>
                         </tr>
-                        </thead>
                         <tbody id="table-data">
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix" th:include="/template/page::page">
-<!--                    分页-->
-                </div>
+                <!-- /.box-body -->
+                <div class="card-footer clearfix" th:include="/template/page2::page2"></div>
             </div>
-            <!-- /.card -->
         </div>
     </div>
 </div>
@@ -69,6 +63,12 @@
             <div class="modal-body">
                 <form class="form-horizontal" id="addUser">
                     <div class="card-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">头像</label>
+                            <div class="col-sm-10">
+                                <input type="file" id="file" name="file" onchange="fileUp(this)">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">用户名</label>
                             <div class="col-sm-10">
@@ -100,9 +100,54 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+<div class="modal fade" id="modal-imp">
+    <div class="modal-dialog modal-default">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">导入用户</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--                <form class="form-horizontal" id="addUser">-->
+                <!--                    <div class="card-body">-->
+                <!--                        <div class="form-group row">-->
+                <!--                            <label for="inputEmail3" class="col-sm-2 col-form-label">用户名</label>-->
+                <!--                            <div class="col-sm-10">-->
+                <!--                                <input type="text" class="form-control" id="inputEmail3" placeholder="用户名"-->
+                <!--                                       name="account">-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                        <div class="form-group row">-->
+                <!--                            <label for="inputPassword3" class="col-sm-2 col-form-label">密码</label>-->
+                <!--                            <div class="col-sm-10">-->
+                <!--                                <input type="password" class="form-control" id="inputPassword3" placeholder="密码"-->
+                <!--                                       name="password">-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    &lt;!&ndash; /.card-body &ndash;&gt;-->
+                <!--                    <div class="card-footer">-->
+                <!--                        <button type="button" class="btn btn-default" data-dismiss="modal" style="display:none;"-->
+                <!--                                id="modal-add-close">Close-->
+                <!--                        </button>-->
+                <!--                        <button type="button" class="btn btn-default float-right" onclick="add(this)">确定-->
+                <!--                        </button>-->
+                <!--                    </div>-->
+                <!--                    &lt;!&ndash; /.card-footer &ndash;&gt;-->
+                <!--                </form>-->
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 <div th:include="/template/cssAndJs::js"></div>
 <!--home-->
 <script th:src="@{/js/user/user.js}"></script>
+<!--pageUtil-->
+<script th:src="@{/js/pageUtil/pageUtil2.js}"></script>
 </body>
 </html>

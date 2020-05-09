@@ -3,29 +3,36 @@
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
-    <!-- Theme style -->
-    <link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" th:href="@{/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css}">
-    <!-- Google Font: Source Sans Pro -->
-    <link th:href="@{/css/fonts.css}" rel="stylesheet">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" th:href="@{/webjars/adminlte/2.3.11/bootstrap/css/bootstrap.min.css}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/css/font-awesome/4.5.0/font-awesome.min.css}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" th:href="@{/css/ionicons/2.0.1/ionicons.min.css}">
+    <!-- AdminLTE -->
+    <link rel="stylesheet" th:href="@{/webjars/adminlte/2.3.11/dist/css/AdminLTE.min.css}">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" th:href="@{/webjars/adminlte/2.3.11/dist/css/skins/skin-blue.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/sweetalert2/9.10.12/dist/sweetalert2.min.css}">
+
 </head>
 <body>
 
 <!--公用js-->
 <div th:fragment="js">
     <!-- jQuery -->
-    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/adminlte/2.3.11/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script th:src="@{/webjars/adminlte/2.3.11/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/webjars/adminlte/2.3.11/dist/js/app.min.js}"></script>
     <!-- ctx-->
     <script th:src="@{/js/path/ctxPath.js}"></script>
-    <!-- Bootstrap 4 -->
-    <script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
-    <!-- AdminLTE App -->
-    <script th:src="@{/js/adminlte.min.js}"></script>
     <!-- SweetAlert2 -->
-    <script th:src="@{/plugins/sweetalert2/sweetalert2.min.js}"></script>
+    <script th:src="@{/webjars/sweetalert2/9.10.12/dist/sweetalert2.min.js}"></script>
     <script th:src="@{/js/sweetAlert2Util/sweetAlert2Util.js}"></script>
 </div>
 </body>

@@ -11,6 +11,13 @@ function to(a,b){
 }
 //注销登录
 function logout(){
-    localStorage.clear();
-    location.replace(root+"/");
+    let loc = localStorage;
+    let lo = location;
+    alert2Ok('warning','警告',"您的操作将会注销登录！")
+    .then(function(isConfirm){
+        if(isConfirm.value === true){
+            loc.clear();
+            lo.replace(root+"/");
+        }
+    });
 }

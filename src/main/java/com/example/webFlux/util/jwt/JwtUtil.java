@@ -3,6 +3,7 @@ package com.example.webFlux.util.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
@@ -30,8 +31,8 @@ public class JwtUtil {
 
         Calendar instance = Calendar.getInstance();
         Date time1 = instance.getTime();
-//        当前时间增加1分钟
-        instance.add(Calendar.MINUTE, 1);
+//        当前时间增加15分钟
+        instance.add(Calendar.MINUTE, 60);
         Date time2 = instance.getTime();
 //头部信息
         Map<String, Object> heardMap = new HashMap<>();
@@ -60,15 +61,16 @@ public class JwtUtil {
      *
      * @param token
      */
-    public static Map<String, Claim> verifyToken(String token) throws TokenExpiredException{
+    public static Map<String, Claim> verifyToken(String token) {
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
         try {
             JWTVerifier build = JWT.require(algorithm).build();
             DecodedJWT verify = build.verify(token);
             return verify.getClaims();
-        } catch (TokenExpiredException e) {
-//            令牌超时
-            throw e;
+        } catch (JWTDecodeException | TokenExpiredException e) {
+//            令牌格式错误
+            log.error(e.getMessage());
+            return null;
         }
     }
 

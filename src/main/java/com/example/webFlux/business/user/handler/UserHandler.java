@@ -60,9 +60,8 @@ public class UserHandler {
      * @param uuid
      * @return
      */
-    public Mono<ResponseEntity<Void>> remove(String uuid) {
-        return userRepository.deleteById(uuid)
-                .map(ResponseEntity::ok);
+    public Mono<Void> remove(String uuid) {
+        return userRepository.deleteById(uuid);
     }
 
     /**
@@ -129,6 +128,11 @@ public class UserHandler {
 //        Example<UserModel> example = Example.of(model);
         List<Sort.Order> orders = new ArrayList<>();
         orders.add(Sort.Order.asc("account"));
+        if (model.getAccount() == null || model.getAccount().isEmpty()) {
+            return userRepository.findAll(Sort.by(orders))
+                    .skip((pageSize - 1) * pageNow)
+                    .limitRate(pageSize);
+        }
         return userRepository.findAllByUserModel(model, Sort.by(orders))
                 .skip((pageSize - 1) * pageNow)
                 .limitRate(pageSize);

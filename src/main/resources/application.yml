@@ -2,7 +2,7 @@ spring:
   thymeleaf:
     encoding: UTF-8
     mode: LEGACYHTML5
-    prefix: classpath:/templates/
+    prefix: classpath:/templates
     suffix: .html
     check-template: true
     cache: false
@@ -14,7 +14,7 @@ spring:
 
 # 更改端口
 server:
-  port: 9001
+  port: 9002
 # 自我监控端点
 management:
   endpoints:
@@ -28,7 +28,7 @@ management:
       enabled: true
   server:
     #    监控的端口
-    port: 9002
+    port: 9003
 
 logging:
   level:
@@ -36,4 +36,4 @@ logging:
 
 # 下载文件暂存路径
 download-path:
-  word-path: F:\download\word\newFiles
+  word-path: F://download//word//newFiles//

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+</head>
+<body>
+<div th:fragment="page2">
+    <ul class="pagination pagination-xm m-0 pull-right">
+        <li class="page-item" onclick="up()">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">上一页</font>
+                </font>
+            </a>
+        </li>
+        <li class="page-item page-item-dow" onclick="dow()">
+            <a class="page-link" href="#">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">下一页</font>
+                </font>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

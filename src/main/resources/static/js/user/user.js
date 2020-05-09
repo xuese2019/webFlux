@@ -1,9 +1,11 @@
-page(0,1);
+var pageN = 0;
+page(0,pageN);
 //分页查询
 function page(pageSize,pageNow){
+    pageN = pageNow;
     pageSize = pageSize <= 0 ? 8 : pageSize;
     $.ajax({
-        url:root+"/user/user/"+pageSize+"/"+pageNow,
+        url:root+"/api/user/"+pageSize+"/"+pageNow,
         headers:{'auth':localStorage.getItem("auth")},
         async:true,
         data:{"account":$("#table_search").val()},
@@ -11,24 +13,18 @@ function page(pageSize,pageNow){
         dataType:"json",
         beforeSend:function(){
             //请求前的处理
-//            $(obj).attr('disabled',true);
+            $("#table_search").addClass('disabled');
             $("#table-data").find("tr").remove();
         },
         success:function(req){
             //请求成功时处理
-            console.log(req);
-//            if(req.status){
-//                $(req.data.records).each(function(i,e){
-//                    $("#table-data").append(tr((i+1),e));
-//                });
-//                pageUtil(req.data);
-//            }else{
-//                alert(req.msg);
-//            }
+            $(req).each(function(i,e){
+                $("#table-data").append(tr((i+1),e));
+            });
         },
         complete:function(){
             //请求完成的处理
-//            $(obj).removeAttr('disabled');
+            $("#table_search").removeClass('disabled');
         },
         error:function(e){
             //请求出错处理
@@ -49,13 +45,13 @@ function tr(i,obj){
             +'            <font style="vertical-align: inherit;">'+obj.account+'</font>'
             +'        </font>'
             +'    </td>'
+//            +'    <td>'
+//            +'        <font style="vertical-align: inherit;">'
+//            +'            <font style="vertical-align: inherit;">'+obj.systime+'</font>'
+//            +'        </font>'
+//            +'    </td>'
             +'    <td>'
-            +'        <font style="vertical-align: inherit;">'
-            +'            <font style="vertical-align: inherit;">'+obj.systime+'</font>'
-            +'        </font>'
-            +'    </td>'
-            +'    <td>'
-            +'        <button type="button" class="btn btn-warning btn-sm" onclick="restPwd(\''+obj.uuid+'\',this)">重置密码</button>'
+//            +'        <button type="button" class="btn btn-warning btn-sm" onclick="restPwd(\''+obj.uuid+'\',this)">重置密码</button>'
             +'        <button type="button" class="btn btn-danger btn-sm" onclick="del(\''+obj.uuid+'\',this)">删除</button>'
             +'    </td>'
             +'</tr>';
@@ -64,95 +60,123 @@ function tr(i,obj){
 //添加用户
 function add(obj){
     $.ajax({
-        url:root+"/user/user",
+        url:root+"/api/user",
+        headers:{'auth':localStorage.getItem("auth")},
         dataType:"json",
         async:true,
         data:$("#addUser").serialize(),
         type:"POST",
         beforeSend:function(){
             //请求前的处理
-            $(obj).attr('disabled',true);
+            $(obj).addClass('disabled');
         },
         success:function(req){
             //请求成功时处理
-            if(req.status){
-                $("#addUser")[0].reset();
-                $('#modal-add-user').modal('hide');
-                $('.show').remove();
-                alert2('success','成功');
-                page(0,1);
-            }else{
-                alert2('error',req.msg);
-            }
+            $("#addUser")[0].reset();
+//            $('#modal-add-user').modal('hide');
+            alert2('success','成功');
+            page(0,pageN);
         },
         complete:function(){
             //请求完成的处理
-            $(obj).removeAttr('disabled');
+            $(obj).removeClass('disabled');
         },
-        error:function(){
+        error:function(e){
             //请求出错处理
-            console.log("error");
+            alert2('error',e.responseText);
+        }
+    });
+}
+//上传头像
+function fileUp(obj){
+    var formData = new FormData();
+    formData.append("file",$('#file')[0].files[0]);
+    $.ajax({
+        url:root+"/api/user/portrait",
+        headers:{'auth':localStorage.getItem("auth")},
+        dataType:"json",
+        async:true,
+        data:formData,
+        type:"POST",
+        processData: false,
+        contentType: false,
+        beforeSend:function(){
+            //请求前的处理
+            $(obj).addClass('disabled');
+        },
+        success:function(req){
+            //请求成功时处理
+            alert2('success',req);
+        },
+        complete:function(){
+            //请求完成的处理
+            $(obj).removeClass('disabled');
+        },
+        error:function(e){
+            //请求出错处理
+            alert2('error',e.responseText);
         }
     });
 }
 //删除用户
 function del(e,obj){
-    if(confirm("是否确定删除该记录？")){
-        $.ajax({
-            url:root+"/user/user/"+e,
-            dataType:"json",
-            async:true,
-    //        data:$("#addUser").serialize(),
-            type:"DELETE",
-            beforeSend:function(){
-                //请求前的处理
-                $(obj).attr('disabled',true);
-            },
-            success:function(req){
-                //请求成功时处理
-                if(req.status){
-                    alert2('success','成功');
-                    page(0,1);
-                }else{
-                    alert2('error',req.msg);
+    alert2Ok('warning','警告',"您的操作将会删除该信息！")
+    .then(function(isConfirm){
+        if(isConfirm.value === true){
+            $.ajax({
+                url:root+"/api/user/"+e,
+                headers:{'auth':localStorage.getItem("auth")},
+                dataType:"json",
+                async:true,
+        //        data:$("#addUser").serialize(),
+                type:"DELETE",
+                beforeSend:function(){
+                    //请求前的处理
+                    $(obj).addClass('disabled');
+                },
+                success:function(req){
+                    //请求成功时处理
+//                    无返回值所以走error
+                },
+                complete:function(){
+                    //请求完成的处理
+                    $(obj).removeClass('disabled');
+                },
+                error:function(e){
+                    //请求出错处理
+                     alert2('success','成功');
+                     page(0,pageN);
                 }
-            },
-            complete:function(){
-                //请求完成的处理
-                $(obj).removeAttr('disabled');
-            },
-            error:function(){
-                //请求出错处理
-                console.log("error");
-            }
-        });
-    }
+            });
+        }
+    });
 }
 //重置密码
 function restPwd(e,obj){
     if(confirm("是否确定重置该密码？")){
         $.ajax({
-            url:root+"/user/user/restPwd/"+e,
+            url:root+"/api/user/restPwd/"+e,
+            headers:{'auth':localStorage.getItem("auth")},
             dataType:"json",
             async:true,
     //        data:$("#addUser").serialize(),
             type:"PUT",
             beforeSend:function(){
                 //请求前的处理
-                $(obj).attr('disabled',true);
+                $(obj).addClass('disabled');
             },
             success:function(req){
                 //请求成功时处理
                 if(req.status){
                     alert2('success','成功');
-                    page(0,1);
+                    page(0,pageN);
                 }else{
                     alert2('error',req.msg);
                 }
             },
             complete:function(){
                 //请求完成的处理
-                $(obj).removeAttr('disabled');
+                $(obj).removeClass('disabled');
             },
             error:function(){
                 //请求出错处理
