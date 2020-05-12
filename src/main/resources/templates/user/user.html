@@ -18,12 +18,18 @@
                             </button>
                         </div>
                         <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="搜索"
-                                   id="table_search">
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default" onclick="page(0,0)"><i
-                                        class="fa fa-search"></i></button>
-                            </div>
+                            <form action="#" id="searchForm">
+                                <input type="text" name="account" class="form-control pull-right" placeholder="搜索"
+                                       id="table_search" value="">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default" onclick="page(0,0)">
+                                        <i class="fa fa-search"></i>form
+                                    </button>
+                                    <button type="button" class="btn btn-default" onclick="page2(0,0)">
+                                        <i class="fa fa-search"></i>json
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

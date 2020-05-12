@@ -4,12 +4,9 @@ import com.auth0.jwt.interfaces.Claim;
 import com.example.webFlux.util.jwt.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -19,7 +16,6 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -32,25 +28,25 @@ public class CustomFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
-        ServerHttpRequest request = serverWebExchange.getRequest();
-//        是否需要拦截
-        boolean filter = isFilter(request.getPath().toString());
-        if (!filter) {
-            log.info("当前请求被拦截的路径：{}", (request.getPath()));
-//            token是否合法
-            HttpHeaders headers = request.getHeaders();
-            ResponseEntity<String> token = isToken(headers);
-            HttpStatus statusCode = token.getStatusCode();
-            if (statusCode == HttpStatus.OK) {
-                return webFilterChain.filter(serverWebExchange);
-            } else {
-                ServerHttpResponse response = serverWebExchange.getResponse();
-                DataBuffer buffer = response.bufferFactory().wrap(Objects.requireNonNull(token.getBody()).getBytes());
-                response.setStatusCode(HttpStatus.UNAUTHORIZED);
-                response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
-                return response.writeWith(Mono.just(buffer));
-            }
-        }
+//        ServerHttpRequest request = serverWebExchange.getRequest();
+////        是否需要拦截
+//        boolean filter = isFilter(request.getPath().toString());
+//        if (!filter) {
+//            log.info("当前请求被拦截的路径：{}", (request.getPath()));
+////            token是否合法
+//            HttpHeaders headers = request.getHeaders();
+//            ResponseEntity<String> token = isToken(headers);
+//            HttpStatus statusCode = token.getStatusCode();
+//            if (statusCode == HttpStatus.OK) {
+//                return webFilterChain.filter(serverWebExchange);
+//            } else {
+//                ServerHttpResponse response = serverWebExchange.getResponse();
+//                DataBuffer buffer = response.bufferFactory().wrap(Objects.requireNonNull(token.getBody()).getBytes());
+//                response.setStatusCode(HttpStatus.UNAUTHORIZED);
+//                response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
+//                return response.writeWith(Mono.just(buffer));
+//            }
+//        }
         return webFilterChain.filter(serverWebExchange);
     }
 

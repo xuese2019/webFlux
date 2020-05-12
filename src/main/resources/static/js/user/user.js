@@ -1,14 +1,23 @@
 var pageN = 0;
 page(0,pageN);
-//分页查询
-function page(pageSize,pageNow){
+//分页查询 json版
+function page2(pageSize,pageNow){
     pageN = pageNow;
     pageSize = pageSize <= 0 ? 8 : pageSize;
     $.ajax({
-        url:root+"/api/user/"+pageSize+"/"+pageNow,
+        url:root+"/api/user/json/"+pageSize+"/"+pageNow,
+//        url:root+"/api/user/stream/"+pageSize+"/"+pageNow,
         headers:{'auth':localStorage.getItem("auth")},
-        async:true,
-        data:{"account":$("#table_search").val()},
+        contentType: "application/json",
+        data:
+//            $("#searchForm").serialize(),
+        JSON.parse($("#searchForm").serialize()),
+//            function(){
+//                var params = {
+//                    account:"7"
+//                };
+//                return JSON.stringify(params);
+//            },
         type:"POST",
         dataType:"json",
         beforeSend:function(){
@@ -18,6 +27,7 @@ function page(pageSize,pageNow){
         },
         success:function(req){
             //请求成功时处理
+            console.log(req);
             $(req).each(function(i,e){
                 $("#table-data").append(tr((i+1),e));
             });
@@ -28,6 +38,42 @@ function page(pageSize,pageNow){
         },
         error:function(e){
             //请求出错处理
+            console.log(e.responseText);
+            alert2('error',e.responseText);
+        }
+    });
+}
+// form版
+function page(pageSize,pageNow){
+    pageN = pageNow;
+    pageSize = pageSize <= 0 ? 8 : pageSize;
+    $.ajax({
+        url:root+"/api/user/form/"+pageSize+"/"+pageNow,
+//        url:root+"/api/user/stream/"+pageSize+"/"+pageNow,
+        headers:{'auth':localStorage.getItem("auth")},
+        data:$("#searchForm").serialize(),
+//        data:{"account":"7"},
+        type:"POST",
+        dataType:"json",
+        beforeSend:function(){
+            //请求前的处理
+            $("#table_search").addClass('disabled');
+            $("#table-data").find("tr").remove();
+        },
+        success:function(req){
+            //请求成功时处理
+//            console.log(req);
+            $(req).each(function(i,e){
+                $("#table-data").append(tr((i+1),e));
+            });
+        },
+        complete:function(){
+            //请求完成的处理
+            $("#table_search").removeClass('disabled');
+        },
+        error:function(e){
+            //请求出错处理
+            console.log(e.responseText);
             alert2('error',e.responseText);
         }
     });
@@ -62,9 +108,7 @@ function add(obj){
     $.ajax({
         url:root+"/api/user",
         headers:{'auth':localStorage.getItem("auth")},
-        dataType:"json",
-        async:true,
-        data:$("#addUser").serialize(),
+        dataType:"json",data:$("#addUser").serialize(),
         type:"POST",
         beforeSend:function(){
             //请求前的处理
@@ -92,11 +136,9 @@ function fileUp(obj){
     var formData = new FormData();
     formData.append("file",$('#file')[0].files[0]);
     $.ajax({
-        url:root+"/api/user/portrait",
+        url:root+"/api/file/upload",
         headers:{'auth':localStorage.getItem("auth")},
-        dataType:"json",
-        async:true,
-        data:formData,
+        dataType:"json",data:formData,
         type:"POST",
         processData: false,
         contentType: false,
@@ -126,9 +168,7 @@ function del(e,obj){
             $.ajax({
                 url:root+"/api/user/"+e,
                 headers:{'auth':localStorage.getItem("auth")},
-                dataType:"json",
-                async:true,
-        //        data:$("#addUser").serialize(),
+                dataType:"json",//        data:$("#addUser").serialize(),
                 type:"DELETE",
                 beforeSend:function(){
                     //请求前的处理
@@ -157,9 +197,7 @@ function restPwd(e,obj){
         $.ajax({
             url:root+"/api/user/restPwd/"+e,
             headers:{'auth':localStorage.getItem("auth")},
-            dataType:"json",
-            async:true,
-    //        data:$("#addUser").serialize(),
+            dataType:"json",//        data:$("#addUser").serialize(),
             type:"PUT",
             beforeSend:function(){
                 //请求前的处理

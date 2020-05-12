@@ -1,9 +1,7 @@
 function sub(){
     $.ajax({
         url:root+"/login/login",
-        dataType:"json",
-        async:true,
-        data:$("#login").serialize(),
+        dataType:"json",data:$("#login").serialize(),
         type:"POST",
         beforeSend:function(){
             $('#submit').attr('disabled',true);

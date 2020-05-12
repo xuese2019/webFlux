@@ -22,9 +22,7 @@
     function init(){
         $.ajax({
             url:getRootPath()+"/aerocraft/aerocraft",
-            dataType:"json",
-            async:true,
-            type:"GET",
+            dataType:"json",type:"GET",
             beforeSend:function(){
                 //请求前的处理
             },
@@ -45,9 +43,7 @@
     function submit(){
         $.ajax({
             url:getRootPath()+"/aerocraft/aerocraft",
-            dataType:"json",
-            async:true,
-            data:{"sudu",$("#sudu").val()},
+            dataType:"json",data:{"sudu",$("#sudu").val()},
             type:"post",
             beforeSend:function(){
                 //请求前的处理

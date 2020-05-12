@@ -8,22 +8,22 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Document(collection = "user_table")
 public class UserModel implements Serializable {
     //标明主键
     @Id
     private String uuid;
 
-    @NotBlank(message = "账号不能为空")
+    //    @NotBlank(message = "账号不能为空")
     private String account;
 
-    @NotBlank(message = "密码不能为空")
+    //    @NotBlank(message = "密码不能为空")
     private String password;
+
 }
