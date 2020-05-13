@@ -51,7 +51,9 @@ public class LoginHandler {
                                 }
                                 boolean b = Objects.requireNonNull(m.getBody()).getPassword().equals(u.getPassword());
                                 if (b) {
-                                    String jwt = JwtUtil.createJwt(Objects.requireNonNull(m.getBody()).getUuid(), "user");
+                                    String jwt = JwtUtil.createJwt(Objects.requireNonNull(m.getBody()).getUuid()
+                                            , Objects.requireNonNull(m.getBody()).getAccount()
+                                            , "user");
                                     return ServerResponse
                                             .ok()
                                             .body(BodyInserters.fromValue(jwt));

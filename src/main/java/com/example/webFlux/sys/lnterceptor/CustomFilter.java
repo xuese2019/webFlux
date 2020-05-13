@@ -99,6 +99,7 @@ public class CustomFilter implements WebFilter {
         list.add(".woff2");
         list.add(".css.map");
         list.add(".js.map");
+        list.add(".jpg");
         list.add("/login");
         return list;
     }

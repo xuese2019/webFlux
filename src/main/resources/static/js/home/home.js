@@ -1,3 +1,15 @@
+//默认加载数据
+init();
+function init(){
+    $(".logo-t").text(getToken().user);
+}
+//解析令牌
+function getToken(){
+    let auth = localStorage.getItem("auth");
+    let a = auth.split(".");
+    let b = window.atob(a[1]);
+    return JSON.parse(b);
+}
 //跳转页面
 function to(a,b){
     $.ajax({

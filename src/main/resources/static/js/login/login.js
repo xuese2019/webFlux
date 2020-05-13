@@ -3,7 +3,8 @@ function sub(){
         url:root+"/login/login",
         dataType:"text",
         contentType: "application/json",
-        data: JSON.stringify($("#login").serializeObject()),
+//        data: JSON.stringify($("#login").serializeObject()),
+        data: JSON.stringify({"account":$("#account").text(),"password":$("#password").text()}),
         type:"POST",
         beforeSend:function(){
             $('#submit').attr('disabled',true);

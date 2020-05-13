@@ -8,11 +8,10 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a th:href="@{/page/home/home}" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <!--            <span class="logo-mini"><b>A</b>LT</span>-->
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"></span>
+        <a th:href="@{/page/home/home}" class="logo" style="text-align:left;">
+            <img th:src="@{/img/loginBack.jpg}" class="user-image" alt="User Image"
+                 style="width:30px;height:30px;border-radius:15px;"/>
+            <span class="logo-t" style="margin-top:5px;"></span>
         </a>
 
         <!-- Header Navbar -->
@@ -24,43 +23,6 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <!--                    <li class="dropdown messages-menu">-->
-                    <!--                        &lt;!&ndash; Menu toggle button &ndash;&gt;-->
-                    <!--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
-                    <!--                            <i class="fa fa-envelope-o"></i>-->
-                    <!--                            <span class="label label-success">4</span>-->
-                    <!--                        </a>-->
-                    <!--                        <ul class="dropdown-menu">-->
-                    <!--                            <li class="header">You have 4 messages</li>-->
-                    <!--                            <li>-->
-                    <!--                                &lt;!&ndash; inner menu: contains the messages &ndash;&gt;-->
-                    <!--                                <ul class="menu">-->
-                    <!--                                    <li>&lt;!&ndash; start message &ndash;&gt;-->
-                    <!--                                        <a href="#">-->
-                    <!--                                            <div class="pull-left">-->
-                    <!--                                                &lt;!&ndash; User Image &ndash;&gt;-->
-                    <!--                                                <img src="dist/img/user2-160x160.jpg" class="img-circle"-->
-                    <!--                                                     alt="User Image">-->
-                    <!--                                            </div>-->
-                    <!--                                            &lt;!&ndash; Message title and timestamp &ndash;&gt;-->
-                    <!--                                            <h4>-->
-                    <!--                                                Support Team-->
-                    <!--                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>-->
-                    <!--                                            </h4>-->
-                    <!--                                            &lt;!&ndash; The message &ndash;&gt;-->
-                    <!--                                            <p>Why not buy a new awesome theme?</p>-->
-                    <!--                                        </a>-->
-                    <!--                                    </li>-->
-                    <!--                                    &lt;!&ndash; end message &ndash;&gt;-->
-                    <!--                                </ul>-->
-                    <!--                                &lt;!&ndash; /.menu &ndash;&gt;-->
-                    <!--                            </li>-->
-                    <!--                            <li class="footer"><a href="#">See All Messages</a></li>-->
-                    <!--                        </ul>-->
-                    <!--                    </li>-->
-                    <!-- /.messages-menu -->
-
                     <!-- Notifications Menu -->
                     <li class="dropdown notifications-menu">
                         <!-- Menu toggle button -->
@@ -94,6 +56,10 @@
                 </ul>
             </div>
         </nav>
+        <!--            进度展示-->
+        <div class="progress sm" style="margin-bottom:0;height:2px;background-color: #3c8dbc;">
+            <div id="load-bar" class="progress-bar progress-bar-green" style="width: 0;"></div>
+        </div>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
@@ -105,9 +71,9 @@
             <ul class="sidebar-menu">
                 <li class="header">菜单</li>
                 <!-- Optionally, you can add icons to the links -->
-
+                <li class="active"><a th:href="@{/page/home/home}"><i class="fa fa-home"></i> <span>首页</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>系统管理</span>
+                    <a href="#"><i class="fa fa-cogs"></i> <span>系统管理</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -116,39 +82,20 @@
                         <li onclick="to('user','user')"><a href="#">账号管理</a></li>
                     </ul>
                 </li>
-
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
-                        <li><a href="#">Link in level 2</a></li>
-                    </ul>
-                </li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-
+    <div id="content-wrapper" class="content-wrapper overlay-wrapper">
         <!-- Main content -->
         <section class="content" id="content">
-
             <!-- Your Page Content Here -->
-
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- To the right -->
@@ -161,116 +108,6 @@
 
 </div>
 <!-- ./wrapper -->
-
-
-<!--<body class="hold-transition sidebar-mini">-->
-<!--<div class="wrapper">-->
-
-<!--    &lt;!&ndash; 顶部 &ndash;&gt;-->
-<!--    <nav class="main-header navbar navbar-expand navbar-white navbar-light">-->
-<!--        &lt;!&ndash;        左侧工具栏&ndash;&gt;-->
-<!--        <ul class="navbar-nav">-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        &lt;!&ndash; 右侧工具栏 &ndash;&gt;-->
-<!--        <ul class="navbar-nav ml-auto">-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="javascript:logout();" role="button">-->
-<!--                    <i class="fas fa-sign-out-alt"></i>-->
-<!--                </a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </nav>-->
-<!--    &lt;!&ndash; /顶部 &ndash;&gt;-->
-
-<!--    &lt;!&ndash; 左侧 &ndash;&gt;-->
-<!--    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="width:250px;">-->
-<!--        &lt;!&ndash; 顶部logo &ndash;&gt;-->
-<!--        <a th:href="@{/page/home/home}" class="brand-link" align="center">-->
-<!--            &lt;!&ndash;            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"&ndash;&gt;-->
-<!--            &lt;!&ndash;                 style="opacity: .8">&ndash;&gt;-->
-<!--            <span class="brand-text font-weight-light">-->
-<!--                系统菜单-->
-<!--            </span>-->
-<!--        </a>-->
-
-<!--        &lt;!&ndash; 菜单 &ndash;&gt;-->
-<!--        <div class="sidebar">-->
-<!--            &lt;!&ndash; Sidebar Menu &ndash;&gt;-->
-<!--            <nav class="mt-2">-->
-<!--                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"-->
-<!--                    data-accordion="false">-->
-<!--                    &lt;!&ndash; Add icons to the links using the .nav-icon class-->
-<!--                         with font-awesome or any other icon font library &ndash;&gt;-->
-<!--                    <li class="nav-item has-treeview">-->
-<!--                        <a href="#" class="nav-link">-->
-<!--                            <i class="nav-icon fas fa-th"></i>-->
-<!--                            <p>-->
-<!--                                系统菜单-->
-<!--                                <i class="right fas fa-angle-left"></i>-->
-<!--                            </p>-->
-<!--                        </a>-->
-<!--                        <ul class="nav nav-treeview">-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="javascript:to('user','user');" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>用户管理</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item has-treeview">-->
-<!--                        <a href="#" class="nav-link">-->
-<!--                            <i class="nav-icon fas fa-th"></i>-->
-<!--                            <p>-->
-<!--                                飞行器菜单-->
-<!--                                <i class="right fas fa-angle-left"></i>-->
-<!--                            </p>-->
-<!--                        </a>-->
-<!--                        <ul class="nav nav-treeview">-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>参数输入</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="javascript:to('aerocraft','graphics');" class="nav-link">-->
-<!--                                    <i class="far fa-circle nav-icon"></i>-->
-<!--                                    <p>图形展示</p>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a href="#" class="nav-link">-->
-<!--                            <i class="nav-icon fas fa-th"></i>-->
-<!--                            <p>-->
-<!--                                Simple Link-->
-<!--                                &lt;!&ndash;                                <span class="right badge badge-danger">New</span>&ndash;&gt;-->
-<!--                            </p>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </nav>-->
-<!--            &lt;!&ndash; /.sidebar-menu &ndash;&gt;-->
-<!--        </div>-->
-<!--        &lt;!&ndash; /.sidebar &ndash;&gt;-->
-<!--    </aside>-->
-
-<!--    &lt;!&ndash; 中部显示区域 &ndash;&gt;-->
-<!--    <div class="content-wrapper" id="content" style="width: calc(100vw - 250px);height: calc(100vh - 90px);overflow-y:auto;">-->
-<!--    </div>-->
-<!--    &lt;!&ndash; /.content-wrapper &ndash;&gt;-->
-
-<!--    &lt;!&ndash; 底部 &ndash;&gt;-->
-<!--    <footer class="main-footer">-->
-<!--    </footer>-->
-<!--</div>-->
-<!--&lt;!&ndash; ./wrapper &ndash;&gt;-->
-
 <div th:include="/template/cssAndJs::js"></div>
 <!--home-->
 <script th:src="@{/js/home/home.js}"></script>

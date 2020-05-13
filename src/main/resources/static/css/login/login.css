@@ -1,0 +1,12 @@
+.login-page{
+    background: url(/img/loginBack.jpg) no-repeat;
+    background-size: cover;
+}
+.login-box-body,.form-control{
+    background: rgba(100,100,100,0.3);
+    color:#fff;
+}
+.form-control-feedback{
+    background: #FFFFFF;
+    color:#FFFFFF;
+}

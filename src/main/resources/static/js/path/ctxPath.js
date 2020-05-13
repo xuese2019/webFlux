@@ -16,3 +16,27 @@ $.fn.serializeObject = function() {
 };
 //项目根
 var root = window.location.protocol + '//' + window.location.host;
+//ajax 全局设置
+$.ajaxSetup({
+    beforeSend: function (xmlHttp) {
+        console.log(xmlHttp);
+        //ajax请求之前
+        $("#load-bar").css("width","90%");
+        $("#content-wrapper").append(
+            "<div class=\"overlay\">"+
+            "   <i class=\"fa fa-refresh fa-spin\"></i>"+
+            "</div>"
+        );
+    },
+    complete: function () {
+        //ajax请求完成，不管成功失败
+        $("#load-bar").css("width","100%");
+        setTimeout(function(){
+            $("#load-bar").css("width","0");
+        },2000);
+        $(".overlay").remove();
+    },
+    error: function () {
+        //ajax请求失败
+    }
+});

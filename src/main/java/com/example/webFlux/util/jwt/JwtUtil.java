@@ -24,10 +24,11 @@ public class JwtUtil {
      * 生成token
      *
      * @param userId
+     * @param account
      * @param role
      * @return
      */
-    public static String createJwt(String userId, String role) {
+    public static String createJwt(String userId,String account, String role) {
 
         Calendar instance = Calendar.getInstance();
         Date time1 = instance.getTime();
@@ -44,6 +45,8 @@ public class JwtUtil {
                 .withHeader(heardMap)
 //                载体
                 .withClaim("role", role)
+//                当前登陆人账号
+                .withClaim("user", account)
 //                签发者
                 .withIssuer("webFlux")
 //                接收者信息，一般是登录的用户
@@ -63,16 +66,9 @@ public class JwtUtil {
      */
     public static Map<String, Claim> verifyToken(String token) throws JWTDecodeException, TokenExpiredException {
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
-//        try {
         JWTVerifier build = JWT.require(algorithm).build();
         DecodedJWT verify = build.verify(token);
         return verify.getClaims();
-//        } catch (JWTDecodeException | TokenExpiredException e) {
-//            令牌格式错误
-//            log.error(e.getMessage());
-//            return null;
-//    }
-
     }
 
     /**
