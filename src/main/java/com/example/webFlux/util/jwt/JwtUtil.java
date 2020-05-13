@@ -61,17 +61,18 @@ public class JwtUtil {
      *
      * @param token
      */
-    public static Map<String, Claim> verifyToken(String token) {
+    public static Map<String, Claim> verifyToken(String token) throws JWTDecodeException, TokenExpiredException {
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
-        try {
-            JWTVerifier build = JWT.require(algorithm).build();
-            DecodedJWT verify = build.verify(token);
-            return verify.getClaims();
-        } catch (JWTDecodeException | TokenExpiredException e) {
+//        try {
+        JWTVerifier build = JWT.require(algorithm).build();
+        DecodedJWT verify = build.verify(token);
+        return verify.getClaims();
+//        } catch (JWTDecodeException | TokenExpiredException e) {
 //            令牌格式错误
-            log.error(e.getMessage());
-            return null;
-        }
+//            log.error(e.getMessage());
+//            return null;
+//    }
+
     }
 
     /**

@@ -31,26 +31,26 @@ public class User2Handler {
      * @return
      */
     public Mono<ServerResponse> save(ServerRequest request) {
-        Mono<UserModel> model = request.bodyToMono(UserModel.class);
-        return model.map(u -> {
-            u.setUuid(UUID.randomUUID().toString().replaceAll("-", ""));
-            return u;
-        }).flatMap(u -> {
-            UserModel model1 = new UserModel();
-            model1.setAccount(u.getAccount());
-            Example<UserModel> example = Example.of(model1);
-            return userRepository.findOne(example)
-                    .flatMap(m -> {
+        return request.bodyToMono(UserModel.class)
+                .map(u -> {
+                    u.setUuid(UUID.randomUUID().toString().replaceAll("-", ""));
+                    return u;
+                }).flatMap(u -> {
+                    UserModel model1 = new UserModel();
+                    model1.setAccount(u.getAccount());
+                    Example<UserModel> example = Example.of(model1);
+                    return userRepository.findOne(example)
+                            .flatMap(m -> {
 //                        NOT_ACCEPTABLE 406
-                        return ServerResponse.status(HttpStatus.NOT_ACCEPTABLE).bodyValue(Mono.just("账号重复"));
-                    })
-                    .switchIfEmpty(
-                            ServerResponse
-                                    .ok().
-                                    contentType(MediaType.APPLICATION_JSON)
-                                    .body(this.userRepository.saveAll(model), UserModel.class)
-                    );
-        });
+                                return ServerResponse.status(HttpStatus.NOT_ACCEPTABLE).bodyValue(Mono.just("账号重复"));
+                            })
+                            .switchIfEmpty(
+                                    ServerResponse
+                                            .ok().
+                                            contentType(MediaType.APPLICATION_JSON)
+                                            .body(this.userRepository.save(u), UserModel.class)
+                            );
+                });
     }
 
     /**
@@ -88,7 +88,7 @@ public class User2Handler {
                                 return ServerResponse
                                         .ok()
                                         .contentType(MediaType.APPLICATION_JSON)
-                                        .body(this.userRepository.save(o), UserModel.class);
+                                        .body(this.userRepository.save(u), UserModel.class);
                             })
                             .switchIfEmpty(ServerResponse.notFound().build());
                 });

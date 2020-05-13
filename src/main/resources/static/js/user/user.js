@@ -1,7 +1,7 @@
 var pageN = 0;
 page(0,pageN);
 //分页查询 json版
-function page2(pageSize,pageNow){
+function page(pageSize,pageNow){
     pageN = pageNow;
     pageSize = pageSize <= 0 ? 8 : pageSize;
     $.ajax({
@@ -9,15 +9,7 @@ function page2(pageSize,pageNow){
 //        url:root+"/api/user/stream/"+pageSize+"/"+pageNow,
         headers:{'auth':localStorage.getItem("auth")},
         contentType: "application/json",
-        data:
-//            $("#searchForm").serialize(),
-        JSON.parse($("#searchForm").serialize()),
-//            function(){
-//                var params = {
-//                    account:"7"
-//                };
-//                return JSON.stringify(params);
-//            },
+        data: JSON.stringify({"account":$("#table_search").val()}),
         type:"POST",
         dataType:"json",
         beforeSend:function(){
@@ -27,7 +19,6 @@ function page2(pageSize,pageNow){
         },
         success:function(req){
             //请求成功时处理
-            console.log(req);
             $(req).each(function(i,e){
                 $("#table-data").append(tr((i+1),e));
             });
@@ -44,7 +35,7 @@ function page2(pageSize,pageNow){
     });
 }
 // form版
-function page(pageSize,pageNow){
+function page2(pageSize,pageNow){
     pageN = pageNow;
     pageSize = pageSize <= 0 ? 8 : pageSize;
     $.ajax({
@@ -108,7 +99,10 @@ function add(obj){
     $.ajax({
         url:root+"/api/user",
         headers:{'auth':localStorage.getItem("auth")},
-        dataType:"json",data:$("#addUser").serialize(),
+        contentType: "application/json",
+        data: JSON.stringify($("#addUser").serializeObject()),
+//        data:$("#addUser").serialize(),
+        dataType:"json",
         type:"POST",
         beforeSend:function(){
             //请求前的处理
@@ -127,6 +121,7 @@ function add(obj){
         },
         error:function(e){
             //请求出错处理
+            console.log(e.responseText);
             alert2('error',e.responseText);
         }
     });

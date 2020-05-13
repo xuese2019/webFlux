@@ -28,6 +28,18 @@ public class AllException {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getAllErrors().get(0).getDefaultMessage());
     }
 
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<String> nullPointerException(NullPointerException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+
+    /**
+     * 令牌过期异常
+     *
+     * @param e
+     * @return
+     */
     @ExceptionHandler(TokenExpiredException.class)
     public ResponseEntity<String> TokenExpiredException(TokenExpiredException e) {
         log.error(e.getMessage());

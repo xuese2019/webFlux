@@ -1,12 +1,16 @@
 package com.example.webFlux.sys.lnterceptor;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
 import com.example.webFlux.util.jwt.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -28,25 +32,25 @@ public class CustomFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
-//        ServerHttpRequest request = serverWebExchange.getRequest();
-////        是否需要拦截
-//        boolean filter = isFilter(request.getPath().toString());
-//        if (!filter) {
-//            log.info("当前请求被拦截的路径：{}", (request.getPath()));
-////            token是否合法
-//            HttpHeaders headers = request.getHeaders();
-//            ResponseEntity<String> token = isToken(headers);
-//            HttpStatus statusCode = token.getStatusCode();
-//            if (statusCode == HttpStatus.OK) {
-//                return webFilterChain.filter(serverWebExchange);
-//            } else {
-//                ServerHttpResponse response = serverWebExchange.getResponse();
-//                DataBuffer buffer = response.bufferFactory().wrap(Objects.requireNonNull(token.getBody()).getBytes());
-//                response.setStatusCode(HttpStatus.UNAUTHORIZED);
-//                response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
-//                return response.writeWith(Mono.just(buffer));
-//            }
-//        }
+        ServerHttpRequest request = serverWebExchange.getRequest();
+//        是否需要拦截
+        boolean filter = isFilter(request.getPath().toString());
+        if (!filter) {
+            log.info("当前请求被拦截的路径：{}", (request.getPath()));
+//            token是否合法
+            HttpHeaders headers = request.getHeaders();
+            ResponseEntity<String> token = isToken(headers);
+            HttpStatus statusCode = token.getStatusCode();
+            if (statusCode == HttpStatus.OK) {
+                return webFilterChain.filter(serverWebExchange);
+            } else {
+                ServerHttpResponse response = serverWebExchange.getResponse();
+                DataBuffer buffer = response.bufferFactory().wrap(token.getBody() != null ? token.getBody().getBytes() : "未指定错误".getBytes());
+                response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
+                response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
+                return response.writeWith(Mono.just(buffer));
+            }
+        }
         return webFilterChain.filter(serverWebExchange);
     }
 
@@ -111,11 +115,15 @@ public class CustomFilter implements WebFilter {
         if (token == null || token.isEmpty()) {
             return new ResponseEntity<>("令牌错误，请从新登录", HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
-            Map<String, Claim> stringClaimMap = JwtUtil.verifyToken(token);
-            if (stringClaimMap != null) {
-                return new ResponseEntity<>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("令牌错误，请从新登录", HttpStatus.INTERNAL_SERVER_ERROR);
+            try {
+                Map<String, Claim> stringClaimMap = JwtUtil.verifyToken(token);
+                if (stringClaimMap != null) {
+                    return new ResponseEntity<>(HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>("令牌错误，请从新登录", HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } catch (TokenExpiredException ignored) {
+                return new ResponseEntity<>("令牌过期，请从新登录", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
     }

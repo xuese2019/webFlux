@@ -18,22 +18,33 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class UserRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> users(User2Handler userHandler) {
+    public RouterFunction<ServerResponse> userR(User2Handler userHandler) {
         return RouterFunctions.nest(
 //                设置统一请求前缀
                 path("/api/user"),
-                route(POST("/"), userHandler::save)
-                        .andRoute(DELETE("/{uuid}"), userHandler::remove)
-                        .andRoute(PUT("/{uuid}"), userHandler::edit)
-                        .andRoute(GET("/{uuid}"), userHandler::one)
-//                        json 参数
-                        .andRoute(POST("/json/{pageSize}/{pageNow}")
-                                        .and(contentType(MediaType.APPLICATION_JSON))
-                                , userHandler::findAll)
-//                        form 参数
-                        .andRoute(POST("/form/{pageSize}/{pageNow}")
-                                        .and(contentType(MediaType.APPLICATION_FORM_URLENCODED))
-                                , userHandler::findAll2)
+                route(
+                        POST("")
+                                .and(contentType(MediaType.APPLICATION_JSON))
+                        , userHandler::save
+                ).andRoute(
+                        DELETE("/{uuid}"), userHandler::remove
+                ).andRoute(
+                        PUT("/{uuid}")
+                                .and(contentType(MediaType.APPLICATION_JSON))
+                        , userHandler::edit
+                ).andRoute(
+                        GET("/{uuid}"), userHandler::one
+                ).andRoute(
+                        POST("/json/{pageSize}/{pageNow}")
+//                                        json 参数
+                                .and(contentType(MediaType.APPLICATION_JSON))
+                        , userHandler::findAll
+                ).andRoute(
+                        POST("/form/{pageSize}/{pageNow}")
+//                                        form 参数
+                                .and(contentType(MediaType.APPLICATION_FORM_URLENCODED))
+                        , userHandler::findAll2
+                )
         );
 //        return RouterFunctions.route()
 //                .POST("/user/user", RequestPredicates.accept(MediaType.APPLICATION_JSON), userHandler::add)
