@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
@@ -20,7 +21,7 @@ public class UserModel implements Serializable {
     @Id
     private String uuid;
 
-    //    @NotBlank(message = "账号不能为空")
+    @NotBlank(message = "账号不能为空")
     private String account;
 
     //    @NotBlank(message = "密码不能为空")

@@ -1,5 +1,6 @@
 package com.example.webFlux.sys.lnterceptor;
 
+import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
 import com.example.webFlux.util.jwt.JwtUtil;
@@ -122,8 +123,8 @@ public class CustomFilter implements WebFilter {
                 } else {
                     return new ResponseEntity<>("令牌错误，请从新登录", HttpStatus.INTERNAL_SERVER_ERROR);
                 }
-            } catch (TokenExpiredException ignored) {
-                return new ResponseEntity<>("令牌过期，请从新登录", HttpStatus.INTERNAL_SERVER_ERROR);
+            } catch (TokenExpiredException | JWTDecodeException ignored) {
+                return new ResponseEntity<>("令牌错误，请从新登录", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
     }

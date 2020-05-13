@@ -2,6 +2,7 @@ package com.example.webFlux.business.user.handler;
 
 import com.example.webFlux.business.user.model.UserModel;
 import com.example.webFlux.business.user.repository.UserRepository;
+import com.example.webFlux.util.md5.Md5Util;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,7 @@ public class User2Handler {
         return request.bodyToMono(UserModel.class)
                 .map(u -> {
                     u.setUuid(UUID.randomUUID().toString().replaceAll("-", ""));
+                    u.setPassword(Md5Util.md5(u.getPassword()));
                     return u;
                 }).flatMap(u -> {
                     UserModel model1 = new UserModel();
@@ -41,8 +43,8 @@ public class User2Handler {
                     Example<UserModel> example = Example.of(model1);
                     return userRepository.findOne(example)
                             .flatMap(m -> {
-//                        NOT_ACCEPTABLE 406
-                                return ServerResponse.status(HttpStatus.NOT_ACCEPTABLE).bodyValue(Mono.just("账号重复"));
+//                        BAD_REQUEST 400
+                                return ServerResponse.status(HttpStatus.BAD_REQUEST).bodyValue(Mono.just("账号重复"));
                             })
                             .switchIfEmpty(
                                     ServerResponse
@@ -78,6 +80,12 @@ public class User2Handler {
     public Mono<ServerResponse> edit(ServerRequest request) {
         String uuid = request.pathVariable("uuid");
         return request.bodyToMono(UserModel.class)
+                .map(u -> {
+                    if (u.getPassword() != null) {
+                        u.setPassword(Md5Util.md5(u.getPassword()));
+                    }
+                    return u;
+                })
                 .flatMap(o -> {
                     return userRepository.findById(uuid)
                             .map(m -> {
