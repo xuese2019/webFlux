@@ -18,7 +18,6 @@ function sub(){
             $('#submit').removeAttr('disabled');
         },
         error:function(e){
-            console.log(e.responseText);
             alert(e.responseText);
         }
     });

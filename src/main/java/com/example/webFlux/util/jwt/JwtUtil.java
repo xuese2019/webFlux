@@ -28,7 +28,7 @@ public class JwtUtil {
      * @param role
      * @return
      */
-    public static String createJwt(String userId,String account, String role) {
+    public static String createJwt(String userId, String account, String role) {
 
         Calendar instance = Calendar.getInstance();
         Date time1 = instance.getTime();

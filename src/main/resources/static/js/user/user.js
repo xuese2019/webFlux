@@ -29,7 +29,6 @@ function page(pageSize,pageNow){
         },
         error:function(e){
             //请求出错处理
-            console.log(e.responseText);
             alert2('error',e.responseText);
         }
     });
@@ -53,7 +52,6 @@ function page2(pageSize,pageNow){
         },
         success:function(req){
             //请求成功时处理
-//            console.log(req);
             $(req).each(function(i,e){
                 $("#table-data").append(tr((i+1),e));
             });
@@ -64,7 +62,6 @@ function page2(pageSize,pageNow){
         },
         error:function(e){
             //请求出错处理
-            console.log(e.responseText);
             alert2('error',e.responseText);
         }
     });
@@ -121,7 +118,6 @@ function add(obj){
         },
         error:function(e){
             //请求出错处理
-            console.log(e.responseText);
             alert2('error',e.responseText);
         }
     });
@@ -213,7 +209,6 @@ function restPwd(e,obj){
             },
             error:function(){
                 //请求出错处理
-                console.log("error");
             }
         });
     }
