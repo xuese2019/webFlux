@@ -19,6 +19,8 @@ public class JwtUtil {
 
     //密钥
     private static String SECRET = "com.web.flux";
+    //    签发者
+    public static String ISS = "webFlux";
 
     /**
      * 生成token
@@ -48,7 +50,7 @@ public class JwtUtil {
 //                当前登陆人账号
                 .withClaim("user", account)
 //                签发者
-                .withIssuer("webFlux")
+                .withIssuer(ISS)
 //                接收者信息，一般是登录的用户
                 .withAudience(userId)
 //                签发时间

@@ -7,7 +7,7 @@ function page(pageSize,pageNow){
     $.ajax({
         url:root+"/api/user/json/"+pageSize+"/"+pageNow,
 //        url:root+"/api/user/stream/"+pageSize+"/"+pageNow,
-        headers:{'auth':localStorage.getItem("auth")},
+//        headers:{'auth':localStorage.getItem("auth")},
         contentType: "application/json",
         data: JSON.stringify({"account":$("#table_search").val()}),
         type:"POST",
@@ -40,7 +40,7 @@ function page2(pageSize,pageNow){
     $.ajax({
         url:root+"/api/user/form/"+pageSize+"/"+pageNow,
 //        url:root+"/api/user/stream/"+pageSize+"/"+pageNow,
-        headers:{'auth':localStorage.getItem("auth")},
+//        headers:{'auth':localStorage.getItem("auth")},
         data:$("#searchForm").serialize(),
 //        data:{"account":"7"},
         type:"POST",
@@ -95,7 +95,7 @@ function tr(i,obj){
 function add(obj){
     $.ajax({
         url:root+"/api/user",
-        headers:{'auth':localStorage.getItem("auth")},
+//        headers:{'auth':localStorage.getItem("auth")},
         contentType: "application/json",
         data: JSON.stringify($("#addUser").serializeObject()),
 //        data:$("#addUser").serialize(),
@@ -128,7 +128,7 @@ function fileUp(obj){
     formData.append("file",$('#file')[0].files[0]);
     $.ajax({
         url:root+"/api/file/upload",
-        headers:{'auth':localStorage.getItem("auth")},
+//        headers:{'auth':localStorage.getItem("auth")},
         dataType:"json",data:formData,
         type:"POST",
         processData: false,
@@ -158,7 +158,7 @@ function del(e,obj){
         if(isConfirm.value === true){
             $.ajax({
                 url:root+"/api/user/"+e,
-                headers:{'auth':localStorage.getItem("auth")},
+//                headers:{'auth':localStorage.getItem("auth")},
                 dataType:"json",//        data:$("#addUser").serialize(),
                 type:"DELETE",
                 beforeSend:function(){
@@ -187,7 +187,7 @@ function restPwd(e,obj){
     if(confirm("是否确定重置该密码？")){
         $.ajax({
             url:root+"/api/user/restPwd/"+e,
-            headers:{'auth':localStorage.getItem("auth")},
+//            headers:{'auth':localStorage.getItem("auth")},
             dataType:"json",//        data:$("#addUser").serialize(),
             type:"PUT",
             beforeSend:function(){

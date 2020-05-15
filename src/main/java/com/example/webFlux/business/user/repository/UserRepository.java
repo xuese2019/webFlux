@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * 数据库访问层
@@ -33,6 +34,14 @@ public interface UserRepository extends ReactiveMongoRepository<UserModel, Strin
      */
     @Query(value = "{'account': ?0}", fields = "{'account': 1}")
     Flux<UserModel> findAllByAccount(String account, Sort sort);
+
+    /**
+     * 根据姓名查询
+     *
+     * @param account
+     * @return
+     */
+    Mono<UserModel> findAllByAccount(String account);
 
     /**
      * 指明sql条件

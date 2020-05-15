@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
+    <meta name="auth">
     <title th:text="${title}"></title>
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" th:href="@{/webjars/adminlte/2.3.11/bootstrap/css/bootstrap.min.css}">
@@ -31,6 +32,8 @@
     <script th:src="@{/webjars/adminlte/2.3.11/dist/js/app.min.js}"></script>
     <!-- ctx-->
     <script th:src="@{/js/path/ctxPath.js}"></script>
+    <!-- ctx-->
+    <script th:src="@{/js/path/ajaxConfig.js}"></script>
     <!-- SweetAlert2 -->
     <script th:src="@{/webjars/sweetalert2/9.10.12/dist/sweetalert2.min.js}"></script>
     <script th:src="@{/js/sweetAlert2Util/sweetAlert2Util.js}"></script>

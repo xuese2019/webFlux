@@ -35,7 +35,8 @@ public class CustomFilter implements WebFilter {
     public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
         ServerHttpRequest request = serverWebExchange.getRequest();
 //        是否需要拦截
-        boolean filter = isFilter(request.getPath().toString());
+//        boolean filter = isFilter(request.getPath().toString());
+        boolean filter = true;
         if (!filter) {
             log.info("当前请求被拦截的路径：{}", (request.getPath()));
 //            token是否合法

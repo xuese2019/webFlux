@@ -6,6 +6,7 @@ import com.example.webFlux.exception.MyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
@@ -30,6 +31,12 @@ public class AllException {
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<String> nullPointerException(NullPointerException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<String> badCredentialsException(BadCredentialsException e) {
         log.error(e.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
