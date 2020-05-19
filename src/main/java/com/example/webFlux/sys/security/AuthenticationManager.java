@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * 身份在验证管理器
+ * 负责校验Authentication 对象
  */
 @Component
 public class AuthenticationManager implements ReactiveAuthenticationManager {

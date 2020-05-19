@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+/**
+ * 从请求的信息中载入验证信息
+ */
 @Component
 public class SecurityContextRepository implements ServerSecurityContextRepository {
 
@@ -29,12 +32,10 @@ public class SecurityContextRepository implements ServerSecurityContextRepositor
         ServerHttpRequest request = serverWebExchange.getRequest();
 //        HttpHeaders.AUTHORIZATION
         String authHeader = request.getHeaders().getFirst("auth");
-
         if (authHeader != null) {
             Authentication auth = new UsernamePasswordAuthenticationToken(authHeader, authHeader);
             return this.authenticationManager.authenticate(auth).map(SecurityContextImpl::new);
-        } else {
-            return Mono.empty();
         }
+        return Mono.empty();
     }
 }

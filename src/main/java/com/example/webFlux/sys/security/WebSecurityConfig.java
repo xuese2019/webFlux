@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
+/**
+ * 过滤连
+ */
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 public class WebSecurityConfig {
@@ -27,15 +30,40 @@ public class WebSecurityConfig {
                 .securityContextRepository(securityContextRepository)
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
-                .pathMatchers("/").permitAll()
-                .pathMatchers("/webjars/**").permitAll()
-                .pathMatchers("/css/**").permitAll()
-                .pathMatchers("/img/**").permitAll()
-                .pathMatchers("/js/**").permitAll()
-                .pathMatchers("/page/**").permitAll()
-                .pathMatchers("/login/**").permitAll()
+                .pathMatchers(
+                        "/",
+                        "/webjars/**",
+                        "/css/**",
+                        "/img/**",
+                        "/js/**",
+                        "/favicon.ico",
+                        "/page/**",
+                        "/login/**"
+                ).permitAll()
                 .anyExchange().authenticated()
-                .and()
-                .build();
+                .and().build();
+
+//        return http
+//                .csrf().disable()
+//                .formLogin().disable()
+//                .httpBasic().disable()
+//                .securityContextRepository(securityContextRepository)
+////                .authenticationManager(authenticationManager)
+//                .authorizeExchange()
+//                .pathMatchers(HttpMethod.OPTIONS).permitAll()
+//                .pathMatchers(
+//                        "/",
+//                        "/webjars/**",
+//                        "/css/**",
+//                        "/img/**",
+//                        "/js/**",
+//                        "/favicon.ico",
+//                        "/page/**",
+//                        "/login/**"
+//                ).permitAll()
+//                .anyExchange()
+//                .authenticated()
+//                .and()
+//                .build();
     }
 }
